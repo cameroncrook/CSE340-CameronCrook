@@ -1,6 +1,148 @@
-/******* Change Box Model ***************/
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
+h1, h2, h3, h4, h5, h6, a {
+  font-family: "Helvetica", "Arial", sans-serif;
 }
+
+p, li {
+  font-family: "Arial", sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+.d-none {
+  display: none;
+}
+
+@media (min-width: 670px) {
+  body {
+    background-image: url("/images/site/small_check.jpg");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (min-width: 670px) {
+  #wrapper {
+    width: 85%;
+    height: 95%;
+    background-color: white;
+    border: 3px solid #08b4d4;
+    border-radius: 5px;
+    padding: 10px;
+  }
+}
+
+#top-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+#top-header a {
+  text-decoration: none;
+  color: #333;
+}
+#top-header .siteName a {
+  font-size: 34px;
+  font-weight: bold;
+}
+
+nav {
+  padding: 0px;
+}
+nav ul {
+  list-style-type: none;
+  background-color: #333;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 0px;
+}
+nav ul li {
+  text-align: center;
+  color: white;
+  padding: 5px;
+  cursor: pointer;
+}
+nav ul li:hover {
+  background-color: #666;
+}
+
+#welcome > div {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+#welcome > div > div {
+  position: absolute;
+  left: 0;
+  top: 20px;
+  z-index: 1;
+  color: #333;
+}
+#welcome > div > div .transparent-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 0.9;
+  z-index: -1;
+}
+#welcome > div > div h3, #welcome > div > div p {
+  margin: 0px;
+}
+#welcome > div > div img {
+  width: 165px;
+}
+
+@media (min-width: 670px) {
+  #reviews {
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+}
+#reviews li {
+  font-style: italic;
+  margin-bottom: 5px;
+}
+@media (min-width: 670px) {
+  #reviews ul {
+    height: 100%;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+}
+
+#upgrades > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+  text-align: center;
+}
+#upgrades .background-primary {
+  background-color: #08b4d4;
+  width: 100%;
+  height: 85px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px #666 solid;
+}
+
+@media (min-width: 670px) {
+  #home-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+  }
+  #home-grid #reviews {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
