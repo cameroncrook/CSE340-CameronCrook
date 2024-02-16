@@ -76,7 +76,9 @@ nav {
         list-style-type: none;
         background-color: #333;
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(6, 1fr);
+        // display: flex;
+        // justify-content: space-evenly;
         padding: 0px;
 
         li {
@@ -85,9 +87,13 @@ nav {
             }
 
             text-align: center;
-            color: white;
             padding: 5px;
             cursor: pointer;
+
+            a {
+                text-decoration: none;
+                color: white;
+            }
         }
     }
 }

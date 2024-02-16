@@ -1,0 +1,18 @@
+<!-- Content heading -->
+<section>
+    <% if (title) { %>
+        <h1><%= title %></h1>
+    <% } else {
+        res.redirect('/')
+    } %>
+</section>
+
+<!-- Message -->
+<section>
+    <%# messages() %>
+</section>
+
+<!-- Invetory Items -->
+<section>
+    <%- grid %>
+</section>

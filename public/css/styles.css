@@ -55,17 +55,20 @@ nav ul {
   list-style-type: none;
   background-color: #333;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   padding: 0px;
 }
 nav ul li {
   text-align: center;
-  color: white;
   padding: 5px;
   cursor: pointer;
 }
 nav ul li:hover {
   background-color: #666;
+}
+nav ul li a {
+  text-decoration: none;
+  color: white;
 }
 
 #welcome > div {
