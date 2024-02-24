@@ -22,7 +22,29 @@ async function getInventoryByClassificationId(classification_id) {
     return data.rows
   } catch (error) {
     console.error("getclassificationsbyid error " + error)
+    return []
   }
 }
 
-module.exports = {getClassifications, getInventoryByClassificationId};
+/* ***************************
+ *  Get item details by inv_id
+ * ************************** */
+async function getInventoryDetailsByInvId(inv_id) {
+  try {
+    const data = await pool.query(
+      `SELECT i.*, c.classification_name as inv_classification
+      FROM public.inventory i
+      INNER JOIN public.classification c
+      ON i.classification_id = c.classification_id
+      WHERE i.inv_id = ${inv_id};`
+    )
+
+    return data.rows
+  } catch (error) {
+    console.error("getinvid error " + error)
+    return 404
+  }
+}
+
+
+module.exports = {getClassifications, getInventoryByClassificationId, getInventoryDetailsByInvId};
