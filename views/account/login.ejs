@@ -1,0 +1,40 @@
+<section>
+    <% if (title) { %>
+        <h1><%= title %></h1>
+    <% } else {
+        res.redirect('/')
+    } %>
+</section>
+
+<section>
+    <%- messages() %>
+    <% if (errors) { %>
+        <ul class="notice">
+       <% errors.array().forEach(error => { %>
+         <li><%= error.msg %></li>
+      <%  }) %>
+       </ul>
+      <% } %>
+</section>
+
+<section>
+    <form class="login-form" action="/account/login" method="post">
+        <label class="login-form__label" for="account_email">Email</label>
+        <input class="login-form__input" type="email" id="account_email" name="account_email" required value="<%= locals.account_email %>">
+
+        <label class="login-form__label" for="account_password">Password</label>
+        <input 
+            class="login-form__input" 
+            type="text" 
+            id="account_password" 
+            name="account_password" 
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{12,}"
+            required>
+
+        <div class="login-form__submit">
+            <input type="submit" value="LOGIN">
+        </div>
+
+        <p class="login-form__sign-up">No account? <a href="/account/register">Sign-up</a></p>
+    </form>
+</section>

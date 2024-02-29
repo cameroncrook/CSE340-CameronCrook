@@ -239,12 +239,95 @@ nav ul li a {
 .item-display__call-to-action button {
   width: 70%;
   background-color: #08b4d4;
-  color: #EFF8E2;
+  color: #333;
   padding: 25px;
   border: 1px solid #ADA8B6;
   border-radius: 10px;
   cursor: pointer;
   font-size: 1rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  background-color: #EFF8E2;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+}
+.login-form__label {
+  font-weight: bold;
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+.login-form__input {
+  border: none;
+  border-radius: 5px;
+  color: #333;
+  font-size: 18px;
+  box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.3);
+  height: 35px;
+  padding-left: 7px;
+  margin-bottom: 20px;
+}
+.login-form__submit {
+  display: flex;
+  justify-content: center;
+}
+.login-form__submit input {
+  background-color: white;
+  color: #333;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  margin-bottom: 20px;
+  width: 100px;
+  height: 30px;
+}
+.login-form__sign-up {
+  text-align: center;
+  font-size: 16px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 100%;
+  max-width: 360px;
+  background-color: #EFF8E2;
+  border: 1px solid #ADA8B6;
+  border-radius: 5px;
+}
+.register-form__label {
+  font-size: 24px;
+  color: #333;
+}
+.register-form__input {
+  color: #333;
+  box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.3);
+  border: none;
+  padding-left: 10px;
+  height: 35px;
+  margin-bottom: 20px;
+}
+.register-form__input:valid {
+  border: 1px solid green;
+}
+.register-form__submit input {
+  background-color: #08b4d4;
+  color: #333;
+  border-radius: 25px;
+  border: none;
+  font-size: 18px;
+  box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  height: 45px;
+  width: 120px;
 }
 
 /*# sourceMappingURL=styles.css.map */
