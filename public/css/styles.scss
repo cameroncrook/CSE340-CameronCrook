@@ -327,6 +327,10 @@ nav {
     }
 }
 
+// ----------------------------------
+// Login-form
+// ----------------------------------
+
 .login-form {
     // Display
     display: flex;
@@ -393,6 +397,11 @@ nav {
     }
 }
 
+
+// ----------------------------------
+// .register-form
+// ----------------------------------
+
 .register-form {
     // display
     display: flex;
@@ -446,5 +455,71 @@ nav {
             height: 45px;
             width: 120px;
         }
+    }
+}
+
+
+// ----------------------------------
+// Inventory and Classification add forms
+// ----------------------------------
+.add-form {
+    // display
+    &:not(&--compact) {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    &--compact {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+    }
+
+    // sizing and spacing
+
+
+
+    label {
+        // styles
+        font-weight: bold;
+        font-size: 24px;
+    }
+
+    input:not(&__submit), textarea, select {
+        // styles
+        color: $text-color;
+        border-radius: 5px;
+        border: 1px outset $accent1;
+        font-size: 18px;
+
+        // sizing and spacing
+        height: 45px;
+        width: 95%;
+        padding-left: 10px;
+
+        &:valid {
+            border: 2px solid green;
+        }
+    }
+
+    &__submit {
+        // position
+
+        // sizing and spacing
+        width: 200px;
+        height: 45px;
+        margin-bottom: 30px;
+        margin-top: 20px;
+
+        // styles
+        background-color: $primary-color !important;
+        border-radius: 25px;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    p {
+        font-style: italic;
     }
 }

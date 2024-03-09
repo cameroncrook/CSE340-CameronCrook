@@ -330,4 +330,44 @@ nav ul li a {
   width: 120px;
 }
 
+.add-form:not(.add-form--compact) {
+  display: flex;
+  flex-direction: column;
+}
+.add-form--compact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+.add-form label {
+  font-weight: bold;
+  font-size: 24px;
+}
+input:not(.add-form__submit), .add-form textarea, .add-form select {
+  color: #333;
+  border-radius: 5px;
+  border: 1px outset #ADA8B6;
+  font-size: 18px;
+  height: 45px;
+  width: 95%;
+  padding-left: 10px;
+}
+input:not(.add-form__submit):valid, .add-form textarea:valid, .add-form select:valid {
+  border: 2px solid green;
+}
+.add-form__submit {
+  width: 200px;
+  height: 45px;
+  margin-bottom: 30px;
+  margin-top: 20px;
+  background-color: #08b4d4 !important;
+  border-radius: 25px;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+.add-form p {
+  font-style: italic;
+}
+
 /*# sourceMappingURL=styles.css.map */

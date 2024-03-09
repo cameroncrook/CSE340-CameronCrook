@@ -1,0 +1,15 @@
+<section>
+    <% if (title) { %>
+        <h1><%= title %></h1>
+    <% } else {
+        res.redirect('/')
+    } %>
+</section>
+
+<section>
+</section>
+
+<section>
+    <a href="/inv/add-classification">Add New Classification</a>
+    <a href="/inv/add-inventory">Add New Vehicle</a>
+</section>

@@ -89,7 +89,7 @@ validate.checkRegData = async (req, res, next) => {
         return
     }
     next()
-    }
+}
 
 validate.checkLoginData = async (req, res, next) => {
     const { account_email, account_password } = req.body

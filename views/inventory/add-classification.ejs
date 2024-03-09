@@ -1,0 +1,28 @@
+<section>
+    <% if (title) { %>
+        <h1><%= title %></h1>
+    <% } else {
+        res.redirect('/')
+    } %>
+</section>
+
+<section>
+    <%- messages() %>
+    <% if (errors) { %>
+        <ul class="notice">
+       <% errors.array().forEach(error => { %>
+         <li><%= error.msg %></li>
+      <%  }) %>
+       </ul>
+      <% } %>
+</section>
+
+<section>
+    <form action="/inv/add-classification" method="post" class="add-form">
+        <label for="classification_name">Classification Name</label>
+        <p>The new classification name cannot contain a space or special character of any kind.</p>
+        <input id="classification_name" name="classification_name" type="text" required pattern="[A-Za-z0-9]+" title="The new classification name cannot contain a space or special character of any kind." value="<%= locals.classification_name %>">
+
+        <input class="add-form__submit" type="submit" value="Add Classification">
+    </form>
+</section>

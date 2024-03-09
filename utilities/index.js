@@ -93,6 +93,25 @@ Util.buildInvItemView = async function(vehicle) {
   return view
 }
 
+/* **************************************
+* Build the classification options for a select element
+* ************************************ */
+Util.getClassificationOptions = async function() {
+  let classifications = await invModel.getClassifications()
+
+  let classification_options = "";
+
+  classifications.rows.forEach(classification => {
+    const option = `
+      <option value="${classification.classification_id}">${classification.classification_name}</option>
+    `
+
+    classification_options += option
+  })
+
+  return classification_options
+}
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
