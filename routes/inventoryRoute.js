@@ -31,4 +31,23 @@ router.get("/type/:classificationId", invController.buildByClassificationId);
 // Route to build item details view
 router.get("/detail/:itemId", invController.buildByInvId);
 
+router.get("/getInventory/:classification_id", invController.getInventoryJSON)
+
+// Route to edit inventory item
+router.get("/edit/:itemId", invController.buildEditByInvId)
+
+router.post(
+    "/update/", 
+    invValidate.inventoryRules(),
+    invValidate.checkUpdateData,
+    invController.updateInventory
+)
+
+router.get("/delete/:itemId", invController.buildDeleteByInvId)
+
+router.post(
+    "/remove",
+    invController.removeVehicle
+)
+
 module.exports = router;

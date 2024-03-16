@@ -1,4 +1,7 @@
 const invModel = require("../models/inventory-model")
+const jwt = require("jsonwebtoken")
+require("dotenv").config()
+
 const Util = {}
 
 /* ************************
@@ -96,21 +99,64 @@ Util.buildInvItemView = async function(vehicle) {
 /* **************************************
 * Build the classification options for a select element
 * ************************************ */
-Util.getClassificationOptions = async function() {
+Util.getClassificationOptions = async function(class_id=null) {
   let classifications = await invModel.getClassifications()
 
   let classification_options = "";
 
   classifications.rows.forEach(classification => {
-    const option = `
+    let option = '';
+    if (class_id && classification.classification_id == class_id) {
+      option = `
+      <option value="${classification.classification_id}" selected>${classification.classification_name}</option>
+      `
+    } else {
+      option = `
       <option value="${classification.classification_id}">${classification.classification_name}</option>
     `
+    }
+    
 
     classification_options += option
   })
 
   return classification_options
 }
+
+/* ****************************************
+* Middleware to check token validity
+**************************************** */
+Util.checkJWTToken = (req, res, next) => {
+  if (req.cookies.jwt) {
+   jwt.verify(
+    req.cookies.jwt,
+    process.env.ACCESS_TOKEN_SECRET,
+    function (err, accountData) {
+     if (err) {
+      req.flash("Please log in")
+      res.clearCookie("jwt")
+      return res.redirect("/account/login")
+     }
+     res.locals.accountData = accountData
+     res.locals.loggedin = 1
+     next()
+    })
+  } else {
+   next()
+  }
+}
+
+/* ****************************************
+ *  Check Login
+ * ************************************ */
+Util.checkLogin = (req, res, next) => {
+  if (res.locals.loggedin) {
+    next()
+  } else {
+    req.flash("notice", "Please log in.")
+    return res.redirect("/account/login")
+  }
+ }
 
 /* ****************************************
  * Middleware For Handling Errors

@@ -1,0 +1,86 @@
+<section>
+    <% if (title) { %>
+        <h1><%= title %></h1>
+    <% } else {
+        res.redirect('/')
+    } %>
+</section>
+
+<section>
+    <%- messages() %>
+    <% if (errors) { %>
+        <ul class="notice">
+       <% errors.array().forEach(error => { %>
+         <li><%= error.msg %></li>
+      <%  }) %>
+       </ul>
+      <% } %>
+</section>
+
+<section>
+    <form id="deleteForm" action="/inv/remove" method="post" class="add-form add-form--compact">
+        <div>
+            <label for="inv_make">Make</label>
+            <input id="inv_make" name="inv_make" type="text" readonly required value="<%= inv_make %>">
+        </div>
+        
+        <div>
+            <label for="inv_model">Model</label>
+            <input id="inv_model" name="inv_model" type="text" readonly required value="<%= inv_model %>">
+        </div>
+        
+        <div>
+            <label for="inv_year">Year</label>
+            <input id="inv_year" name="inv_year" type="number" readonly required value="<%= inv_year %>">
+        </div>
+        
+
+        <div>
+            <label for="inv_description">Description</label>
+            <textarea id="inv_description" name="inv_description" readonly required ><%= inv_description %></textarea>
+        </div>
+
+        <div>
+            <label for="inv_image">Image URL</label>
+            <input id="inv_image" name="inv_image" type="text" readonly required value="<%= inv_image %>">
+        </div>
+
+        <div>
+            <label for="inv_thumbnail">Thumbnail</label>
+            <input type="text" id="inv_thumbnail" name="inv_thumbnail" readonly required value="<%= inv_thumbnail %>">
+        </div>
+
+        <div>
+            <label for="inv_price">Price</label>
+            <input id="inv_price" name="inv_price" type="number" readonly required value="<%= inv_price %>">
+        </div>
+        
+        <div>
+            <label for="inv_miles">Miles</label>
+            <input id="inv_miles" name="inv_miles" type="number" readonly required value="<%= inv_miles %>">
+        </div>
+        
+        <div>
+            <label for="inv_color">Color</label>
+            <input id="inv_color" name="inv_color" type="text" readonly required value="<%= inv_color %>">
+        </div>
+        
+        <div>
+            <label for="classification_id">Classification</label>
+            <select id="classification_id" name="classification_id" aria-readonly="true">
+                <% if (classification_options) { %>
+                    <%- classification_options %>
+                <% } %>
+            </select>
+        </div>
+
+        <div>
+            <p>Confirm Deletion - The delete is permanent.</p>
+            <input class="add-form__submit" type="submit" value="Delete">
+        </div>
+
+        <input type="hidden" name="inv_id"
+        <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+        <% } %>>
+    </form>
+</section>

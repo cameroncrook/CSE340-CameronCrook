@@ -7,9 +7,30 @@
 </section>
 
 <section>
+    <%- messages() %>
+    <% if (errors) { %>
+        <ul class="notice">
+       <% errors.array().forEach(error => { %>
+         <li><%= error.msg %></li>
+      <%  }) %>
+       </ul>
+      <% } %>
 </section>
 
 <section>
     <a href="/inv/add-classification">Add New Classification</a>
     <a href="/inv/add-inventory">Add New Vehicle</a>
+
+    <h2>Manage Inventory</h2>
+    <label for="classification_id">Select a classification</label>
+    <select id="classification_id" name="classification_id">
+        <%- classificationOptions %>
+    </select>
+
+    <table id="inventoryDisplay">
+
+    </table>
+    <noscript>JavaScript must be enabled to use this page.</noscript>
 </section>
+
+<script src="../../js/inventory.js"></script>
