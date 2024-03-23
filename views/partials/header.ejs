@@ -3,6 +3,16 @@
       <a href="/" title="Return to home page">CSE Motors</a>
     </span>
     <div id="tools">
-      <a title="Click to log in" href="/account/login">My Account</a>
+      <% if (account) { %>
+        <div>
+          <a href="/account/"><h2>Welcome <%= account.account_firstname %></h2></a>
+          <% if (account.account_type == 'Employee') { %>
+            <a href="/inv/"><h3>Inventory Management</h3></a>
+          <% } %>
+        </div>
+        <a href="/account/logout">Logout</a>
+      <% } else { %>
+        <a title="Click to log in" href="/account/login">My Account</a>
+      <% } %>
     </div>
 </header>

@@ -52,6 +52,16 @@ body {
     }
 }
 
+#tools {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+
+    h2 {
+        margin-top: 0px !important;
+    }
+}
+
 #wrapper {
     @include respond-to('large') {
         width: 85%;

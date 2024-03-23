@@ -15,7 +15,8 @@ invCont.buildManagementView = async function (req, res, next) {
     title: title,
     nav,
     classificationOptions: classificationSelect,
-    errors: null
+    errors: null,
+    account: utilities.getHeaderAccount(req, res)
   })
 }
 
@@ -37,6 +38,7 @@ invCont.addNewClassiification = async function (req, res) {
       title: "Vehicle Management",
       nav,
       errors: null,
+      account: utilities.getHeaderAccount(req, res)
     })
   } else {
     req.flash("notice", "failed to add new classification...")
@@ -44,6 +46,7 @@ invCont.addNewClassiification = async function (req, res) {
       title: "Vehicle Management",
       nav,
       errors: null,
+      account: utilities.getHeaderAccount(req, res)
     })
   }
 }
@@ -70,6 +73,7 @@ invCont.addNewInventory = async function (req, res) {
       nav,
       classification_options,
       errors: null,
+      account: utilities.getHeaderAccount(req, res)
     })
   } else {
     req.flash("notice", "failed to add new inventory...")
@@ -78,6 +82,7 @@ invCont.addNewInventory = async function (req, res) {
       nav,
       classification_options,
       errors: null,
+      account: utilities.getHeaderAccount(req, res)
     })
   }
 
@@ -93,7 +98,8 @@ invCont.buildAddClassification = async function (req, res, next) {
   res.render("./inventory/add-classification.ejs", {
     title: title,
     nav,
-    errors: null
+    errors: null,
+    account: utilities.getHeaderAccount(req, res)
   })
 }
 
@@ -110,7 +116,8 @@ invCont.buildAddInventory = async function (req, res) {
     title: title,
     nav,
     classification_options,
-    errors: null
+    errors: null,
+    account: utilities.getHeaderAccount(req, res)
   })
 }
 
@@ -134,6 +141,7 @@ invCont.buildByClassificationId = async function (req, res, next) {
     title: title,
     nav,
     grid,
+    account: utilities.getHeaderAccount(req, res)
   })
 }
 
@@ -159,6 +167,7 @@ invCont.buildByInvId = async function (req, res, next) {
   res.render('./inventory/inventoryDetails', {
     title,
     nav,
+    account: utilities.getHeaderAccount(req, res),
     detailsView,
   })
 }
@@ -193,6 +202,7 @@ invCont.buildEditByInvId = async function (req, res) {
   res.render("./inventory/edit-inventory.ejs", {
     title: title,
     nav,
+    account: utilities.getHeaderAccount(req, res),
     classification_options,
     errors: null,
     inv_id: itemData.inv_id,
@@ -226,6 +236,7 @@ invCont.buildDeleteByInvId = async function (req, res) {
   res.render("./inventory/delete-confirmation.ejs", {
     title: title,
     nav,
+    account: utilities.getHeaderAccount(req, res),
     classification_options,
     errors: null,
     inv_id: itemData.inv_id,
@@ -273,6 +284,7 @@ invCont.removeVehicle = async function (req, res) {
     res.status(501).render("inventory/delete-confirmation", {
     title: "delete " + itemName,
     nav,
+    account: utilities.getHeaderAccount(req, res),
     classification_options: classificationSelect,
     errors: null,
     inv_id,
@@ -335,6 +347,7 @@ invCont.updateInventory = async function (req, res, next) {
     res.status(501).render("inventory/edit-inventory", {
     title: "Edit " + itemName,
     nav,
+    account: utilities.getHeaderAccount(req, res),
     classification_options: classificationSelect,
     errors: null,
     inv_id,

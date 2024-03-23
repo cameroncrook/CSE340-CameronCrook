@@ -27,6 +27,18 @@ Util.getNav = async function (req, res, next) {
   return list
 }
 
+/* ************************
+ * Get account data to pass to header partial
+ ************************** */
+Util.getHeaderAccount = function (req, res) {
+  if (res.locals.accountData) {
+    return res.locals.accountData;
+  } else {
+    return null;
+  }
+}
+
+
 /* **************************************
 * Build the classification view HTML
 * ************************************ */
@@ -157,6 +169,27 @@ Util.checkLogin = (req, res, next) => {
     return res.redirect("/account/login")
   }
  }
+
+/* ****************************************
+ *  Check authorization
+ * ************************************ */
+Util.checkAuth = (req, res, next) => {
+  if (res.locals.loggedin) {
+    const account_type = res.locals.accountData.account_type
+    
+    if (account_type == 'Employee') {
+      next()
+    } else {
+      req.flash("notice", "You do not have authorization for this page.")
+      return res.redirect("/account/login")
+    }
+  } else {
+    req.flash("notice", "You do not have authorization for this page.")
+    return res.redirect("/account/login")
+  }
+}
+
+
 
 /* ****************************************
  * Middleware For Handling Errors

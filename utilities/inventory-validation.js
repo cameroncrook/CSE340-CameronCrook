@@ -80,6 +80,7 @@ validate.checkClassificationData = async (req, res, next) => {
         errors,
         title: "Add Classification",
         nav,
+        account: utilities.getHeaderAccount(req, res),
         classification_name
         })
         return
@@ -98,6 +99,7 @@ validate.checkInventoryData = async (req, res, next) => {
         errors,
         title: "Add Inventory",
         nav,
+        account: utilities.getHeaderAccount(req, res),
         classification_options,
         inv_make, 
         inv_model, 
@@ -126,6 +128,7 @@ validate.checkUpdateData = async (req, res, next) => {
         errors,
         title: "Edit Inventory",
         nav,
+        account: utilities.getHeaderAccount(req, res),
         classification_options,
         inv_id,
         inv_make, 
@@ -155,6 +158,7 @@ validate.checkRemoveData = async (req, res, next) => {
         errors,
         title: "Delete Inventory",
         nav,
+        account: utilities.getHeaderAccount(req, res),
         classification_options,
         inv_id,
         inv_make, 
