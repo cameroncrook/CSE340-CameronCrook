@@ -44,4 +44,7 @@ router.post(
 
 router.get("/logout", accountController.logout)
 
+// Manage Users
+router.get("/manage-users", utilities.checkLogin, utilities.isAdmin, accountController.buildManageUsers)
+
 module.exports = router;

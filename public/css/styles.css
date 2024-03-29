@@ -379,4 +379,9 @@ input:not(.add-form__submit):valid, .add-form textarea:valid, .add-form select:v
   font-style: italic;
 }
 
+.account-data {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
 /*# sourceMappingURL=styles.css.map */

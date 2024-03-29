@@ -275,4 +275,19 @@ function logout(req, res) {
     return res.redirect("/")
 }
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAccountManage, logout, buildAccountUpdate, updateAccount, changePassword }
+/* ****************************************
+ *  buildManageUsers
+ * ************************************ */
+async function buildManageUsers(req, res) {
+    let nav = await utilities.getNav()
+    let accountSelection = await utilities.buildAccountsSelection()
+    res.render("account/manage-users", {
+        title: "Manage Users",
+        nav,
+        errors: null,
+        account: utilities.getHeaderAccount(req, res),
+        accountSelection
+    })
+}
+
+module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAccountManage, logout, buildAccountUpdate, updateAccount, changePassword, buildManageUsers }

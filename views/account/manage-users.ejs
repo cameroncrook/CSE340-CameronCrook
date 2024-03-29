@@ -17,11 +17,6 @@
       <% } %>
 </section>
 
-<p><%= account.account_type %></p>
-
-<section>
-    <a href="/account/update">Update Account</a>
-    <% if (account.account_type == 'Admin') { %>
-        <a href="/account/manage-users">Manage Users</a>
-    <% } %>
+<section class="accounts">
+    <%- accountSelection %>
 </section>

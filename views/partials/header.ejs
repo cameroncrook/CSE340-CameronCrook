@@ -6,7 +6,7 @@
       <% if (account) { %>
         <div>
           <a href="/account/"><h2>Welcome <%= account.account_firstname %></h2></a>
-          <% if (account.account_type == 'Employee') { %>
+          <% if (account.account_type == 'Employee' || account.account_type == 'Admin') { %>
             <a href="/inv/"><h3>Inventory Management</h3></a>
           <% } %>
         </div>

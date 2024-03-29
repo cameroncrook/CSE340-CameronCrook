@@ -72,4 +72,25 @@ async function updatePassword (account_password, account_id) {
   }
 }
 
-module.exports = {registerAccount, checkExistingEmail, getAccountByEmail, updateAccount, updatePassword}
+/* *****************************
+* Get Accounts
+* ***************************** */
+async function getAccounts () {
+  try {
+    const result = await pool.query(
+      `SELECT
+        account_id
+      ,	account_firstname
+      ,	account_lastname
+      ,	account_email
+      , 	account_type
+      FROM public.account;`
+    )
+
+    return result.rows;
+  } catch (error) {
+    return new Error(`Error while retriving user accounts: ${error}`)
+  }
+}
+
+module.exports = {registerAccount, checkExistingEmail, getAccountByEmail, updateAccount, updatePassword, getAccounts}

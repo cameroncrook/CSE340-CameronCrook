@@ -1,4 +1,5 @@
 const invModel = require("../models/inventory-model")
+const accModel = require("../models/account-model")
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
 
@@ -170,6 +171,15 @@ Util.checkLogin = (req, res, next) => {
   }
  }
 
+Util.isAdmin = (req, res, next) => {
+  if (res.locals.accountData.account_type == 'Admin') {
+    next()
+  } else {
+    req.flash("notice", "Must be an administrator")
+    return res.redirect("/account/login")
+  }
+}
+
 /* ****************************************
  *  Check authorization
  * ************************************ */
@@ -189,6 +199,41 @@ Util.checkAuth = (req, res, next) => {
   }
 }
 
+/* ****************************************
+ *  Build Accounts Selection
+ * ************************************ */
+Util.buildAccountsSelection = async function () {
+  const data = await accModel.getAccounts();
+
+  console.log(data);
+
+  let html = `
+  <div class="account-data">
+    <strong>First Name</strong>
+    <strong>Last name</strong>
+    <strong>Email</strong>
+  </div>
+  `;
+  data.forEach(account => {
+    html += `
+    <div class="account-data">
+      <p>${account.account_firstname}</p>
+      <p>${account.account_lastname}</p>
+      <p>${account.account_email}</p>
+      <div class="account-data__options">
+        <button>delete</button>
+        <select>
+          <option ${account.account_type === 'Client' ? 'selected' : ''}>Client</option>
+          <option ${account.account_type === 'Employee' ? 'selected' : ''}>Employee</option>
+          <option ${account.account_type === 'Admin' ? 'selected' : ''}>Admin</option>
+        </select>
+      </div>
+    </div>
+    `
+  })
+
+  return html
+}
 
 
 /* ****************************************
