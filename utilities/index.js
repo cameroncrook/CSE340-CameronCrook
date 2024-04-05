@@ -205,7 +205,6 @@ Util.checkAuth = (req, res, next) => {
 Util.buildAccountsSelection = async function () {
   const data = await accModel.getAccounts();
 
-  console.log(data);
 
   let html = `
   <div class="account-data">
@@ -216,11 +215,11 @@ Util.buildAccountsSelection = async function () {
   `;
   data.forEach(account => {
     html += `
-    <div class="account-data">
+    <div class="account-data account">
       <p>${account.account_firstname}</p>
       <p>${account.account_lastname}</p>
       <p>${account.account_email}</p>
-      <div class="account-data__options">
+      <div class="account-data__options" data-id="${account.account_id}">
         <button>delete</button>
         <select>
           <option ${account.account_type === 'Client' ? 'selected' : ''}>Client</option>

@@ -290,4 +290,28 @@ async function buildManageUsers(req, res) {
     })
 }
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAccountManage, logout, buildAccountUpdate, updateAccount, changePassword, buildManageUsers }
+async function changeType(req, res) {
+    const { account_id, type } = req.body;
+    
+    const response = await accountModel.changeType(account_id, type);
+
+    if (response) {
+        res.status(201);
+    } else {
+        res.status(501);
+    }
+}
+
+async function deleteAccount(req, res) {
+    const { account_id } = req.body;
+
+    const response = await accountModel.deleteAccount(account_id);
+
+    if (response) {
+        res.status(201);
+    } else {
+        res.status(501);
+    }
+}
+
+module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAccountManage, logout, buildAccountUpdate, updateAccount, changePassword, buildManageUsers, changeType, deleteAccount }

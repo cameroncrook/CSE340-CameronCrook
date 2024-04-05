@@ -47,4 +47,7 @@ router.get("/logout", accountController.logout)
 // Manage Users
 router.get("/manage-users", utilities.checkLogin, utilities.isAdmin, accountController.buildManageUsers)
 
+router.post("/change-type", utilities.isAdmin, accountController.changeType)
+router.post("/delete", utilities.isAdmin, accountController.deleteAccount)
+
 module.exports = router;

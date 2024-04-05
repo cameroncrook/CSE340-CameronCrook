@@ -93,4 +93,35 @@ async function getAccounts () {
   }
 }
 
-module.exports = {registerAccount, checkExistingEmail, getAccountByEmail, updateAccount, updatePassword, getAccounts}
+async function changeType (account_id, account_type) {
+  try {
+    const result = await pool.query(
+      `UPDATE public.account
+      SET account_type = $1
+      WHERE account_id = $2
+      `, [account_type, account_id]
+    )
+
+    return true;
+  } catch (error) {
+    console.log(`Error while updating type: ${error}`);
+    return false;
+  }
+}
+
+async function deleteAccount (account_id) {
+  try {
+    const result = await pool.query(
+      `DELETE FROM public.account
+      WHERE account_id = $1`, [account_id]
+    )
+
+    return true;
+  } catch (error) {
+    console.log(`Error while updating type: ${error}`);
+
+    return false;
+  }
+}
+
+module.exports = {registerAccount, checkExistingEmail, getAccountByEmail, updateAccount, updatePassword, getAccounts, changeType, deleteAccount}

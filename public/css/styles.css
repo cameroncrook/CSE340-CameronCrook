@@ -383,5 +383,9 @@ input:not(.add-form__submit):valid, .add-form textarea:valid, .add-form select:v
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+.account-data__options {
+  display: flex;
+  align-items: center;
+}
 
 /*# sourceMappingURL=styles.css.map */
